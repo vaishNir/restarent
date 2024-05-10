@@ -1,0 +1,12 @@
+.body{
+    background-image: url("./image/1.jpg");
+    background-size: cover;
+}
+.head{
+    font-size: 5rem;
+    text-align: center;
+    font-weight: bold;
+    color: rgba(247, 143, 8, 0.905);
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+}
