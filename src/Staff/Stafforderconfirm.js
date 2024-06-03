@@ -5,23 +5,36 @@ import StaffNav from "./StaffNav";
 
 function Stafforderconfirm() {
   const [state, setState] = useState({});
-  let stafid = localStorage.getItem("staffId");
-  const navigate = useNavigate();
-
+  
   const [staffcartdata, setStaffcartdata] = useState({
     customername: "",
   });
+  const navigate = useNavigate();
+
+  let stafid = localStorage.getItem("staffId") || null;
+  console.log('staf id', stafid)
+  useEffect(() => {
+    if (stafid) {
+      fetchstaffCart();
+
+    }
+  }, []);
+
+  
 console.log(state)
   const fetchstaffCart = async () => {
-    const response = await axios.get(
-      `http://localhost:3500/staffviewcart/${stafid}`
-    );
-    console.log(response.data.result);
-    setState(response.data.result);
+    try {
+      const response = await axios.get(
+        `http://localhost:3500/staffviewcart/${stafid}`
+      );
+      console.log(response.data.result);
+      setState(response.data.result);
+      
+    } catch (error) {
+      console.log("Error on staff view cart", error)
+    }
   };
-  useEffect(() => {
-    fetchstaffCart();
-  }, []);
+ 
 
   const handleCancel = (id) => {
     axios
@@ -75,8 +88,10 @@ console.log(state)
   };
 
   return (
-    <div className="mt-5">
+    <div className="">
       <StaffNav/>
+    <div className="mt-5">
+      
       {state.length > 0 ? (
         <ul
           style={{ listStyleType: "none", width: "30rem" }}
@@ -161,6 +176,7 @@ console.log(state)
       ) : (
         <p>unable to buy the food</p>
       )}
+      </div>
     </div>
   );
 }

@@ -1,0 +1,13 @@
+.body2{
+    background-image: url("https://plus.unsplash.com/premium_photo-1661722663847-f6e026f69529?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    background-size: cover;
+    height: 100vh;
+}
+.head2{
+    font-size: 5rem;
+    text-align: center;
+    font-weight: bold;
+    color: rgba(20, 8, 247, 0.905);
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+}

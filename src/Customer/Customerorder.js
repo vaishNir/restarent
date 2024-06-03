@@ -14,8 +14,10 @@ function Customerorders() {
         fetchcust_order();
       }, []);
   return (
-    <div className="mt-5">
+    <div className="">
     <CustomerNav/>
+    <div className="mt-5">
+
         {state.length > 0 ? (
         <ul
           style={{ listStyleType: "none", width: "48rem" }}
@@ -32,7 +34,7 @@ function Customerorders() {
                   <h4 className="text-center">Customer Name : {x.userid.fname}</h4></div>
               <div className="d-flex">
               <img
-                src={`http://localhost:3500/${x.foodid.image}`}
+                src={`http://localhost:3500/${x.foodid.image.originalname}`}
                 className="img-fluid me-4"
                 alt="..."
                 style={{ width: "8rem", height: "8rem" }}
@@ -73,6 +75,7 @@ function Customerorders() {
           Your Order is Empty
         </h2>
       )}
+      </div>
     </div>
   )
 }

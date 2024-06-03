@@ -1,27 +1,28 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Nav from "../Admin/Nav";
+import CustomerNav from "./CustomerNav";
 
 function ViewOrders() {
   const [state, setState] = useState([]);
-  let custid = localStorage.getItem("custId");
+  let custid = localStorage.getItem("CustomerId");
 
   const fetchorder = async () => {
     const response = await axios.get(
       `http://localhost:3500/vieworderdetails/${custid}`
     );
-    console.log(response.data.result);
+    console.log(response);
     setState(response.data.result);
   };
   useEffect(() => {
     fetchorder();
   }, []);
-
+console.log(state);
   return (
-    <div className="mt-5">
-      <Nav/>
-    {state.length > 0 ? (
+    <div className="">
+<CustomerNav/>
+      <div className="mt-5">
+     {state.length > 0 ? (
         <ul
           style={{ listStyleType: "none", width: "48rem" }}
           className="p-5 pt-0 mx-auto"
@@ -31,8 +32,8 @@ function ViewOrders() {
               key={x._id}
               className="d-flex shadow-lg p-3 bg-body-tertiary rounded mb-4 container-fluid"
             >
-              <img
-                src={`http://localhost:3500/${x.foodid.image}`}
+               <img
+                src={`http://localhost:3500/${x.foodid.image.originalname}`}
                 className="img-fluid me-4"
                 alt="..."
                 style={{ width: "8rem", height: "8rem" }}
@@ -50,17 +51,11 @@ function ViewOrders() {
                 </div>
               </div>
               <div className="mt-3 ms-2">
-                <h5>
-                  Date:{
-" "}
-                  <span>
-                    {x.date.slice(0, 10).split("-").reverse().join("/")}
-                  </span>
-                </h5>
+               
                 <h5 className="me-5 mt-5">
                   Quantity: <span className="ms-1">{x.count}</span>
-                </h5>
-              </div>
+                </h5> 
+               </div> 
             </li>
           ))}
           <div className="text-center mt-2"> 
@@ -73,7 +68,8 @@ function ViewOrders() {
         <h2 className="mt-5 mb-3 me-4 text-center fs-3 fw-semibold">
           Your Order is Empty
         </h2>
-      )}
+      )} 
+      </div>
     </div>
   );
 }

@@ -1,20 +1,34 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import CustomerNav from "./CustomerNav";
-
-function Viewfood({url}) {
-  console.log({url});
+import { useNavigate } from "react-router-dom"
+function Viewfood({ url }) {
+  console.log({ url });
   const [state, setState] = useState([]);
-  let custid = localStorage.getItem("CustomerId");
+  let custid = localStorage.getItem("CustomerId") || null;
+  const navigate = useNavigate();
 
   const [cartdata, setCartdata] = useState({
-    CustomerId : custid,
-    count: "1",
+    CustomerId: "",
+    count: 1,
   });
-  console.log(cartdata,"lll");
+
+  useEffect(() => {
+    if (custid) {
+
+      setCartdata({
+        count: 1,
+        CustomerId: custid
+      })
+    }else {
+      alert("Please Login again")
+      //todo => navigate to customer login page
+    }
+  }, [])
+  console.log(cartdata, "lll");
   const fetchFood = async () => {
     const response = await axios.get("http://localhost:3500/viewfood");
-    console.log(response.data,"kk");
+    console.log(response.data, "kk");
     setState(response.data.data);
   };
   useEffect(() => {
@@ -22,27 +36,29 @@ function Viewfood({url}) {
     fetchFood();
   }, []);
 
-  const handleClick = (foodid,productimg,productprice)=>
-  {
-    console.log(productimg,"mm")
-    axios
-        .post(`http://localhost:3500/addcart/${foodid}`, cartdata,productimg,productprice)
-        .then((res) => {
-          console.log(res);
-          if (res.data.status === 200) {
-            alert(res.data.msg);
-          } else {
-            alert(res.data.msg);
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+  const handleClick = async (foodid) => {
+    try {
+      const res = await axios.post(
+        `http://localhost:3500/addcart/${foodid}`,
+        cartdata
+      )
+      console.log("cart res", res)
+      if (res.status === 200) {
+        navigate("/viewcart");
+
+        alert("Item added to cart");
+        return;
+      }
+    } catch (error) {
+      console.log("Error on add cart ", error);
+    }
+    
   };
 
   return (
-    <div className="m-4">
-      <CustomerNav/>
+    <div className="">
+      <CustomerNav />
+      <div className="m-4">
       <ul style={{ listStyleType: "none" }} className="p-3">
         {state.map((x) => (
           <li key={x._id} className="m-3 p-4 d-inline-flex">
@@ -64,7 +80,7 @@ function Viewfood({url}) {
                         ...cartdata,
                         [a.target.name]: a.target.value,
                       });
-                      x.amount=x.price*a.target.value;
+                      x.amount = x.price * a.target.value;
                     }}
                   >
                     <option value={1}>1</option>
@@ -80,13 +96,13 @@ function Viewfood({url}) {
                   </select>
                   <h4 className="mb-2">
                     Price: {"\u20B9"}
-                    {(x.amount)?(x.amount):(x.price)}
+                    {x.amount ? x.amount : x.price}
                   </h4>
                 </div>
                 <button
                   className="btn btn-primary"
                   onClick={() => {
-                    handleClick(x._id,x.image.originalname,x.price);
+                    handleClick(x._id);
                   }}
                 >
                   Add cart
@@ -96,6 +112,7 @@ function Viewfood({url}) {
           </li>
         ))}
       </ul>
+      </div>
     </div>
   );
 }

@@ -1,22 +1,26 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import AdminNavBar from "../Admin/AdminNavBar";
+import { useNavigate } from "react-router-dom";
 import StaffNav from "./StaffNav";
 
 function Stafforders() {
+  const navigate=useNavigate()
     const [state, setState] = useState([]);
     const fetchstafforder = async () => {
         const response = await axios.get("http://localhost:3500/viewstafforders");
         console.log(response.data.result);
         setState(response.data.result);
       };
+      navigate("/vieworders")
       useEffect(() => {
         fetchstafforder();
       }, []);
   return (
-    <div className="mt-5">
-      <StaffNav/>
+    <div className="">
+ <StaffNav/> 
+ <div className="mt-5">
+
         {state.length > 0 ? (
         <ul
           style={{ listStyleType: "none", width: "48rem" }}
@@ -72,6 +76,7 @@ function Stafforders() {
           Your Order is Empty
         </h2>
       )}
+      </div>
     </div>
   )
 }

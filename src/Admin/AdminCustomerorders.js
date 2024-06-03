@@ -1,9 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import StaffNav from "./StaffNav";
+import AdminNavBar from "./AdminNavBar";
 
-function Staffvieworder() {
+function AdminCustomerorders() {
   const [state, setState] = useState([]);
   const [error, setError] = useState(null);
   let staffid = localStorage.getItem("staffId");
@@ -27,7 +27,7 @@ function Staffvieworder() {
 
   return (
     <div className="">
-      <StaffNav />
+      <AdminNavBar />
       <div className="mt-5">
         {error ? (
           <h2 className="mt-5 mb-3 me-4 text-center fs-3 fw-semibold">
@@ -65,7 +65,12 @@ function Staffvieworder() {
                     </div>
                   </div>
                   <div className="mt-3 ms-2">
-                   
+                    <h5>
+                      Date:{" "}
+                      <span>
+                        {/* {x.date.slice(0, 10).split("-").reverse().join("/")} */}
+                      </span>
+                    </h5>
                     <h5 className="me-5 mt-5">
                       Quantity: <span className="ms-1">{x.count}</span>
                     </h5>
@@ -89,4 +94,4 @@ function Staffvieworder() {
   );
 }
 
-export default Staffvieworder;
+export default AdminCustomerorders;

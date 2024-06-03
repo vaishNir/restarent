@@ -23,7 +23,7 @@ function Stafflogin() {
           alert(res.data.msg);
           localStorage.setItem("staffId", res.data.result._id);
           localStorage.setItem("sfname", res.data.result.fname);
-          navigate("/staffviewfood");
+          navigate("/StaffHome");
           window.location.reload(false);
         } else {
           alert(res.data.msg);
@@ -34,8 +34,10 @@ function Stafflogin() {
       });
   };
   return (
-    <div className="mb-5">
+    <div className="">
       <Nav/>
+    <div className="mt-5">
+
       <form>
         <div
           className="form-control mx-auto d-block "
@@ -91,6 +93,7 @@ function Stafflogin() {
           </div>
         </div>
       </form>
+      </div>
     </div>
   );
 }

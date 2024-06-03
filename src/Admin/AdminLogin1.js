@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"
 import Nav from "./Nav";
 const Username = "admin@gmail.com";
 const Password = "12345";
@@ -24,7 +24,7 @@ function AdminLogin1() {
       if (Password == data.Password) {
         alert("Admin login success");
         localStorage.setItem("admin", data.Username);
-        navigate("Home");
+        navigate("/Adminviewfood");
         window.location.reload(false);
       } else {
         alert("Password Not match");
@@ -34,8 +34,10 @@ function AdminLogin1() {
     }
   };
   return (
-    <div className="mb-5">
+    <div className="">
       <Nav/>
+    <div className="mt-5">
+
     <form
       className="mx-auto shadow-lg"
       style={{
@@ -71,6 +73,7 @@ function AdminLogin1() {
           </button>
         </div>
       </form>
+      </div>
     </div>
   );
 }

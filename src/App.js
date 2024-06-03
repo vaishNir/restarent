@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap/dist/js/bootstrap.bundle.min.js"
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import AdminLogin1 from './Admin/AdminLogin1';
+import AdminCustomerorders from './Admin/AdminCustomerorders';
 import AdminNavBar from './Admin/AdminNavBar';
 import CustomerLogin from './Customer/CustomerLogin';
 import Adminviewfood from './Admin/Adminviewfood';
@@ -30,6 +31,11 @@ import Register from './Admin/Register';
 import  CustomerViewfood from './Customer/Viewfood';
 import CustomerNav from './Customer/CustomerNav';
 import StaffNav from './Staff/StaffNav';
+import Staffordernavbar from './Staff/Staffordernavbar';
+import StaffHome from './Staff/StaffHome';
+import Staffprofile from './Staff/Staffprofile';
+import CustomerHome from './Customer/CustomerHome';
+
 
 function App() {
   const url="http://localhost:3500/"
@@ -57,7 +63,7 @@ function App() {
       <Route path="/Staffvieworder" element={<Staffvieworder/>}></Route>
       <Route path="/Staffpassword" element={<Staffpassword/>}></Route>
       <Route path="/Nav" element={<Nav/>}></Route>
-      <Route path="/Payment" element={<Payment/>}></Route>
+      <Route path="/Payment/:total" element={<Payment/>}></Route>
       <Route path="/Editfood" element={<Editfood/>}></Route>
       <Route path="/Editfooddetails/:foodid" element={<Editfooddetails/>}></Route>
       <Route path="/" element={<Home/>}></Route>
@@ -65,6 +71,12 @@ function App() {
       <Route path="/Viewfood" element={<CustomerViewfood url={url}/>}></Route>
       <Route path="/CustomerNav" element={<CustomerNav/>}></Route>
       <Route path="/StaffNav" element={<StaffNav/>}></Route>
+       <Route path="/Staffordernavbar" element={<Staffordernavbar/>}></Route>
+       <Route path="/StaffHome" element={<StaffHome/>}></Route> 
+       <Route path="/Staffprofile" element={<Staffprofile/>}></Route>
+       <Route path="/Admincustorder" element={<AdminCustomerorders/>}></Route>
+       <Route path="/CustomerHome" element={<CustomerHome/>}></Route>
+      {/* <Route path="/Stafforder" element={<Stafforder/>}></Route>  */}
     
 
    </Routes>

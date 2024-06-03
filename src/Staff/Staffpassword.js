@@ -36,8 +36,10 @@ function Staffpassword() {
   };
 
   return (
-    <div className="mb-5">
+    <div className="">
       <Nav/>
+    <div className="mt-5">
+      
       <form>
         <div
           className="form-control mx-auto d-block "
@@ -100,6 +102,7 @@ function Staffpassword() {
           </div>
         </div>
       </form>
+      </div>
     </div>
   );
 }

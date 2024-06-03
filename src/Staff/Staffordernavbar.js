@@ -1,15 +1,13 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-function CustomerNav() {
+function Staffordernav() {
   const navigate = useNavigate();
-  let Customerid = localStorage.getItem("Customer");
+  let Staffid = localStorage.getItem("Staff");
 
   const handlelogout = () => {
-    Customerid = localStorage.removeItem("CustomerId");
-    localStorage.removeItem("Cfname");
-
-    alert("Customer logged out");
+    Staffid = localStorage.removeItem("Staff");
+    alert("Staff logged out");
     navigate("/");
     window.location.reload(false);
   };
@@ -33,28 +31,33 @@ function CustomerNav() {
             <span className="navbar-toggler-icon"></span>
           </button>
           <ul className="nav justify-content-end mx-5">
-            <li className="nav-item ">
-              <Link
-                className="nav-link"
-                to="/Viewfood"
-              >
-                View food
+            <li className="nav-item dropdown">
+              <Link className="nav-link" to="/">
+                Home
               </Link>
             </li>
-            <li>
-              <Link className="nav-link " to="/viewcart">
-              Viewcart
+            {/* ul className="nav justify-content-end mx-5"> */}
+            <li className="nav-item dropdown">
+              <Link className="nav-link" to="/Customerorders">
+                view orders
               </Link>
-            </li>
-            <li>
-              <Link className="nav-link " to="/ViewOrder">
-                ViewOrder
+              </li>
+              <li className="nav-item dropdown">
+              <Link className="nav-link" to="/Staffvieworder">
+            View Food
               </Link>
-            </li>
-            <li>
-              <Link className="dropdown-item mt-1" onClick={handlelogout}>
-                Log out
-              </Link>
+              </li>
+        
+                
+            <li className="nav-item dropdown">
+            
+              <ul className="dropdown-menu">
+                <li>
+                  <Link className="dropdown-item" onClick={handlelogout}>
+                    Log out
+                  </Link>
+                </li>
+              </ul>
             </li>
           </ul>
         </div>
@@ -63,4 +66,4 @@ function CustomerNav() {
   );
 }
 
-export default CustomerNav;
+export default Staffordernav;

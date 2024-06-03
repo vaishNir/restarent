@@ -44,8 +44,10 @@ const Navigate=useNavigate()
   };
 
   return (
-    <div className="mb-5">
+    <div className="">
       <Nav/>
+    <div className="mt-5">
+      
       <div
         className="form-control d-flex mx-auto"
         style={{ width: "28rem", marginTop: "1rem", backgroundColor: "orange" }}
@@ -193,6 +195,7 @@ const Navigate=useNavigate()
             </button>
           </div>
         </form>
+      </div>
       </div>
     </div>
   );

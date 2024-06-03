@@ -32,33 +32,15 @@ function AdminNavBar() {
           </button>
           <ul className="nav justify-content-end mx-5">
             <li className="nav-item dropdown">
-              <Link className="nav-link" to="/Home">
+              <Link className="nav-link" to="/">
                 Home
               </Link>
             </li>
             <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                View Orders
-              </a>
-              <ul className="dropdown-menu">
-                <li>
-                  <Link className="dropdown-item" to="/viewcustomerorder">
-                    Customer Orders
-                  </Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="/viewstafforder">
-                    Staff Orders
-                  </Link>
-                </li>
-              </ul>
-            </li>
+              <Link className="nav-link" to="/Admincustorder">
+                CustomerOrder
+              </Link>
+              </li>
             <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle"
@@ -76,15 +58,11 @@ function AdminNavBar() {
                   </Link>
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="/viewfood">
+                  <Link className="dropdown-item" to="/Adminviewfood">
                     Viewfood
                   </Link>
                 </li>
-                <li>
-                  <Link className="dropdown-item" to="/editfood">
-                    Edit food
-                  </Link>
-                </li>
+                
               </ul>
             </li>
             <li className="nav-item dropdown">

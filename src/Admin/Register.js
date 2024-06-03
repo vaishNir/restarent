@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import Nav from "./Nav";
+import AdminNavBar from "./AdminNavBar";
 
 function Register() {
   const [data, setData] = useState({
@@ -37,7 +37,7 @@ function Register() {
 
   return (
     <div>
-      <Nav/>
+    <AdminNavBar/>
       <div
         class="form-control d-flex mx-auto"
         style={{ width: "28rem", marginTop: "3rem", backgroundColor: "orange" }}

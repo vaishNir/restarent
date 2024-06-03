@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import AdminNavBar from "./AdminNavBar";
 
 function Addfood() {
   const [data, setData] = useState({
@@ -52,6 +53,9 @@ function Addfood() {
 
 
   return (
+    <div>
+     <AdminNavBar/> 
+    
     <div
       className="mx-auto shadow-lg mb-5"
       style={{
@@ -124,6 +128,7 @@ function Addfood() {
           </button>
         </div>
       </form>
+    </div>
     </div>
   );
 }
