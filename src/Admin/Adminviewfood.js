@@ -6,21 +6,23 @@ function Adminviewfood() {
     const [state, setState] = useState([]);
     const fetchFood = async () => {
         const response = await axios.get("http://localhost:3500/viewfood");
-        console.log(response.data.result);
-        setState(response.data.result);
+        console.log(response.data.data);
+        setState(response.data.data);
       };
       useEffect(() => {
         fetchFood();
       }, []);
   return (  
-    <div className="m-4">
+    <div className="">
       <AdminNavBar/>
+    <div className="m-4">
+
       <ul style={{ listStyleType: "none" }} className="p-3">
         {state.map((x) => (
           <li key={x._id} className="m-3 p-4 d-inline-flex">
             <div className="shadow-lg p-3 bg-body-tertiary rounded">
               <img
-                src={`http://localhost:3500/${x.image}`}
+                src={`http://localhost:3500/${x.image.filename}`}
                 className="img-fluid"
                 alt="..."
                 style={{ width: "15rem", height: "15rem" }}
@@ -38,6 +40,7 @@ function Adminviewfood() {
           </li>
         ))}
       </ul>
+      </div>
     </div>
   );
 }

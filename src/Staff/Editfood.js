@@ -31,8 +31,10 @@ function Editfood() {
   };
 
   return (
-    <div className="m-4">
+    <div className="">
       <AdminNavBar/>
+    <div className="mt-4">
+
       <ul style={{ listStyleType: "none" }} className="p-3">
         {state.length?state.map((x) => (
           <li key={x._id} className="m-3 p-4 d-inline-flex ">
@@ -65,6 +67,7 @@ function Editfood() {
           </li>
         )):'No'}
       </ul>
+      </div>
     </div>
   );
 }

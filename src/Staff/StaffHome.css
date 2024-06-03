@@ -1,0 +1,13 @@
+.body1{
+    background-image: url("https://st.depositphotos.com/1010613/4458/i/600/depositphotos_44589157-stock-photo-waiters-and-waitresses-standing-in.jpg");
+    background-size: cover;
+    height: 100vh;
+}
+.head1{
+    font-size: 5rem;
+    text-align: center;
+    font-weight: bold;
+    color: rgba(20, 8, 247, 0.905);
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+}

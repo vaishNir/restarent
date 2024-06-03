@@ -10,7 +10,6 @@ function Staffregister() {
     dob: "",
     gender: "",
     password: "",
-    confirmpassword: "",
     email: "",
     salary: "",
     contactno: "",
@@ -23,7 +22,6 @@ function Staffregister() {
 
   const handleSubmit = (a) => {
     a.preventDefault();
-    if (data.password === data.confirmpassword) {
       console.log(data);
       axios
         .post("http://localhost:3500/staffregistration", data)
@@ -40,14 +38,13 @@ function Staffregister() {
         .catch((err) => {
           console.log(err);
         });
-    } else {
-      alert("Password and Confirm password must be same");
-    }
   };
 
   return (
-    <div className="mb-5">
+    <div className="">
       <Nav/>
+    <div className="mt-5">
+
       <div
         className="form-control d-flex mx-auto"
         style={{ width: "28rem",marginTop: "1rem" }}
@@ -157,21 +154,7 @@ function Staffregister() {
               onChange={handleChange}
             ></input>
           </div>
-          <div className="d-flex p-2">
-            <label className="form-label mt-2 w-50" htmlFor="confirmpassword">
-              Confirm Password:
-            </label>
-            <input
-              id="confirmpassword"
-              className="form-control"
-              style={{ width: "20rem" }}
-              type="password"
-              name="confirmpassword"
-              placeholder="Enter Confirm password"
-              required
-              onChange={handleChange}
-            ></input>
-          </div>
+          
           <div className="d-flex p-2">
             <label className="form-label mt-2 w-50" htmlFor="salary">
               Salary:
@@ -227,6 +210,7 @@ function Staffregister() {
             </button>
           </div>
         </form>
+      </div>
       </div>
     </div>
   );

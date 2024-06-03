@@ -26,7 +26,7 @@ function CustomerLogin() {
         console.log(res);
         if (res.data.status === 200) {
           alert(res.data.msg);
-          navigate("/Viewfood");
+          navigate("/CustomerNav");
           localStorage.setItem("CustomerId", res.data.result._id);
           localStorage.setItem("Cfname", res.data.result.fname);
           // window.location.reload(false);

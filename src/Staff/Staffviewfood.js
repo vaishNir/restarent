@@ -41,8 +41,10 @@ function Staffviewfood() {
     }
 
   return (
-    <div className="m-4">
+    <div className="">
       <StaffNav/>
+    <div className="mt-4">
+
       <ul style={{ listStyleType: "none" }} className="p-3">
         {state>0?state.map((x) => (
           <li key={x._id} className="m-3 p-4 d-inline-flex">
@@ -96,6 +98,7 @@ function Staffviewfood() {
           </li>
         )):''}
       </ul>
+      </div>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import CustomerNav from "./CustomerNav";
 
 function Payment() {
@@ -11,14 +11,15 @@ function Payment() {
     expiry: "",
     cvc: "",
   });
-  let custid = localStorage.getItem("custId");
+  const params=useParams()
+  let custid = localStorage.getItem("CustomerId");
   const [state, setState] = useState([]);
   let total = 0;
   const fetchOrder = async () => {
     const response = await axios.get(
       `http://localhost:3500/vieworder/${custid}`
     );
-    console.log(response.data.result);
+    console.log(response.data,"mmmmmm");
     setState(response.data.result);
   };
   useEffect(() => {
@@ -37,7 +38,7 @@ function Payment() {
       cardInfo.cvc.length === 3
     ) {
       axios
-        .post("http://localhost:3500/paymentstatus", { state: state })
+        .post("http://localhost:3500/paymentstatus",{state:state})
         .then((res) => {
           alert(res.data.msg);
         })
@@ -105,7 +106,7 @@ function Payment() {
               <div className="amount-placeholder mb-2 ">
                 <h4 for="PaymentAmount" className="text-center mb-3">
                   Payment amount: <span>{"\u20B9"}</span>
-                  <span className="ms-1">{total}</span>
+                  <span className="ms-1">{params.total}</span>
                 </h4>
               </div>
             </div>
@@ -176,7 +177,7 @@ function Payment() {
               >
                 <span className="align-middle">
                   Pay {"\u20B9"}
-                  {total}
+                  {params.total}
                 </span>
               </button>
             </div>
